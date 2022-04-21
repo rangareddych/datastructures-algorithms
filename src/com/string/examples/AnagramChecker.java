@@ -7,11 +7,16 @@ public class AnagramChecker {
         System.out.println(obj.isAnagram("", ""));
         System.out.println(obj.isAnagram(null, null));
         System.out.println(obj.isAnagram("abc", "bca"));
+        System.out.println(obj.isAnagram("abc", null));
+        System.out.println(obj.isAnagram(null, "abc"));
         System.out.println(obj.isAnagram("abc", "xyz"));
     }
 
     private boolean isAnagram(String word1, String word2){
-        if((word1 ==null && word2 == null) || (word1.isEmpty() && word2.isEmpty()))
+
+        if ((word1 == null && word2 != null) || (word1 != null && word2 == null))
+            return false;
+        else if((word1 ==null && word2 == null) || (word1.isEmpty() && word2.isEmpty()))
             return true;
         else if(word1.length() != word2.length()){
             return false;
