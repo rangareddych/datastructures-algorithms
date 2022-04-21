@@ -1,7 +1,10 @@
 package com.string.examples;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class FindDuplicateCharacters {
 
@@ -11,15 +14,8 @@ public class FindDuplicateCharacters {
     }
 
     private void printDuplicateCharacters(String s){
-        char[] chars = s.toCharArray();
-        Map<Character, Integer> map = new HashMap<>();
-        for(Character ch : chars){
-            if(map.containsKey(ch)){
-                map.put(ch, map.get(ch)+1);
-            }else{
-                map.put(ch, 1);
-            }
-        }
+        Map<Character,Long> map = s.chars().mapToObj(c->
+                (char)c).collect(Collectors.groupingBy(c->c,Collectors.counting()));
 
         map.entrySet().stream().filter( entry -> entry.getValue()>1).forEach(e -> System.out.println(e.getKey() + " : "+e.getValue()));
     }
