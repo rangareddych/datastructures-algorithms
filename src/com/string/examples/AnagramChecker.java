@@ -1,5 +1,8 @@
 package com.string.examples;
 
+/**
+ * Check if two Strings are anagrams of each other?
+ */
 public class AnagramChecker {
 
     public static void main(String[] args) {
